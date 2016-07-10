@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+$s = 'social';
+Route::get('/social/redirect/{provider}',['as' => $s .'redirect' , 'uses' => 'Auth\AuthController@getSocialRedirect']);
+Route::get('/social/handle/{provider}', ['as' => $s . 'handle' , 'uses' => 'Auth\AuthController@getSocialHandle']);

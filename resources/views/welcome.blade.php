@@ -40,6 +40,7 @@
             <div class="content">
                 <div class="title">Takoya</div>
             </div>
+            <a href="{{ route('social.redirect', ['provider' => 'google']) }}" class="btn btn-lg btn-primary btn-block google" type="submit">Google</a>
         </div>
     </body>
 </html>
