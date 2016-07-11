@@ -15,9 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/info',function(){
+    echo "info";
+});
 $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\AuthController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\AuthController@getSocialHandle']);
+
 
 $m = 'maps.';
 Route::get('/maps/googlemap',['as'=>$m . 'googlemap',  'uses'=>'MapController@showGoogleMap']);
