@@ -19,5 +19,5 @@ $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\AuthController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\AuthController@getSocialHandle']);
 
-
-Route::get('/map',['as'=>'map','uses'=>'MapController@showMap']);
+$m = 'maps.';
+Route::get('/maps/googlemap',['as'=>$m . 'googlemap',  'uses'=>'MapController@showGoogleMap']);
