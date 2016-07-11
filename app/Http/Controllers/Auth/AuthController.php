@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -61,5 +62,54 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function getSocialRedirect( $provider )
+    {
+        $providerKey = \Config::get('service.' . $provider);
+        if (!empty($providerKey))
+            return view('pages.status')
+                ->with('error','No such provider');
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function getSocialHandle( $provider )
+    {
+        $user = Socialite::driver( $provider )->user();
+
+        $socialUser = null;
+
+        //check is this email present
+
+
+        // $user->token;
+
+        // OAuth Two Providers
+        $token = $user->token;
+        $refreshToken = $user->refreshToken; // not always provided
+        $expiresIn = $user->expiresIn;
+
+        // OAuth One Providers
+        //$token = $user->token;
+        //$tokenSecret = $user->tokenSecret;
+
+        // All Providers
+        $user->getId();
+        $user->getNickname();
+        $user->getName();
+        $user->getEmail();
+        $user->getAvatar();
+
+        dump($user);
     }
 }
