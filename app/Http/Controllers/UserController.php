@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function checkAuth()
+    public function checkAuth( $provider )
     {
         $user = Socialite::driver( $provider )->user();
         if (Auth::check()) {
