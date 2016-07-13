@@ -109,19 +109,6 @@ class AuthController extends Controller
         $user->getName();
         $user->getEmail();
         $user->getAvatar();
-        if (Auth::check()) {
-            // The user is logged in...
-            echo "YES!!!!";
-        }else {
-            echo "NO!!!!";
-        }
-        Auth::login($user);
-        if (Auth::check()) {
-            // The user is logged in...
-            echo "YESA!!!!";
-        }else {
-            echo "NOA!!!!";
-        }
         dump($user);
     }
 }

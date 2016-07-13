@@ -25,3 +25,5 @@ Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' =
 
 $m = 'maps.';
 Route::get('/maps/googlemap',['as'=>$m . 'googlemap',  'uses'=>'MapController@showGoogleMap']);
+
+Route::get('checkauth','UserController@checkAuth');
