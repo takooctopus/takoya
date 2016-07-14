@@ -9,22 +9,24 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function checkAuth( $provider )
+    public function checkAuth()
     {
-        $user = Socialite::driver( $provider )->user();
-        if (Auth::check()) {
+        echo "AAA";
+        $user = Auth::check();
+        //dump($user);
+        /*if (Auth::check()) {
             // The user is logged in...
             echo "YES!!!!";
         }else {
             echo "NO!!!!";
-        }
-        Auth::login($user);
-        if (Auth::check()) {
+        }*/
+        //Auth::login($user);
+        /*if (Auth::check()) {
             // The user is logged in...
             echo "YESA!!!!";
         }else {
             echo "NOA!!!!";
-        }
+        }*/
     }
     /**
      * Display a listing of the resource.

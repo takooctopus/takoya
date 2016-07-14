@@ -17,7 +17,16 @@ Route::get('/', function () {
 
 Route::get('/info',function(){
     echo "info";
+    $user = Auth::user();
+    dump($user);
+    echo Auth::check();
+    Auth::logout();
+    echo Auth::check()+0;
 });
+
+Route::get('login','AuthController@login');
+
+
 $s = 'social.';
 Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\AuthController@getSocialRedirect']);
 Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\AuthController@getSocialHandle']);
@@ -26,4 +35,4 @@ Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' =
 $m = 'maps.';
 Route::get('/maps/googlemap',['as'=>$m . 'googlemap',  'uses'=>'MapController@showGoogleMap']);
 
-Route::get('/checkauth/{provider}','UserController@checkAuth');
+Route::get('/checkauth','UserController@checkAuth');
