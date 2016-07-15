@@ -44,11 +44,10 @@ class SocialAuthenticateRepository
      */
     public function execute($hasCode, SocialAuthenticateInterface $listener, $provider)
     {
-
         if(!$hasCode) return $this->getSocialAuthorizationFirst($provider);
 
+
         $user = $this->socialUsers->findByUsernameOrCreate($this->getSocialUser($provider),$provider);
-        
 
         $this->auth->login($user,true);
 

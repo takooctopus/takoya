@@ -20,12 +20,12 @@ Route::get('/info',function(){
     $user = Auth::user();
     dump($user);
     echo Auth::check();
-    //Auth::logout();
-    //echo Auth::check()+0;
+    Auth::logout();
+    echo Auth::check()+0;
 });
 
-$s = 'social';
-Route::get('social/{provider}',['as' => $s , 'uses' => 'Auth\SocialLoginController@login']);
+$s = 'socialite';
+Route::get('socialite/{provider}',['as' => $s , 'uses' => 'Auth\SocialLoginController@login']);
 
 
 Route::get('login','AuthController@login');
