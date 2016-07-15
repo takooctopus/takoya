@@ -94,7 +94,7 @@ class AuthenticateUser
      */
     public function execute($hasCode,AuthenticateUserListener $listener)
     {
-        if(! $hasCode) return $this->gerAuthorizationFirst();
+        if(! $hasCode) return $this->getAuthorizationFirst();
 
         $user = $this->users->findByUsernameOrCreate($this->getgoogleUser());
 
@@ -105,7 +105,7 @@ class AuthenticateUser
     }
 
 
-    private function gerAuthorizationFirst()
+    private function getAuthorizationFirst()
     {
         return $this->socialite->driver('google')->redirect();
     }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -149,6 +149,7 @@ return [
         // Other service providers...
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+        //\SocialiteProviders\Manager\ServiceProvider::class,
 
     ],
 

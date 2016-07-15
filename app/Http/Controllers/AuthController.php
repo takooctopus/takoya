@@ -22,8 +22,6 @@ class AuthController extends Controller implements AuthenticateUserListener
      */
     public function login(AuthenticateUser $authenticateUser, Request $request)
     {
-        //dd($request);
-        //dd($request->has('code'));
         return $authenticateUser->execute($request->has('code'),$this);
     }
 
